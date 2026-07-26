@@ -18,7 +18,7 @@ export const Route = createFileRoute("/contact")({
       { property: "og:title", content: "Contact Funmilola Real Estate Agency" },
       {
         property: "og:description",
-        content: "Call, WhatsApp or send an enquiry — our Accra agents reply the same day.",
+        content: "Call, WhatsApp or send an enquiry. Our Accra agents reply the same day.",
       },
     ],
   }),
@@ -38,7 +38,7 @@ function ContactPage() {
               Talk to an Accra agent
             </h1>
             <p className="mt-4 max-w-xl text-sm text-muted-foreground sm:text-base">
-              {SITE.tagline}. Reach us on the phone, on WhatsApp, or through the form — whichever is
+              {SITE.tagline}. Reach us on the phone, on WhatsApp, or through the form, whichever is
               easiest for you.
             </p>
           </Reveal>
@@ -59,7 +59,7 @@ function ContactPage() {
                 <span>
                   <span className="block font-display text-base font-bold">{SITE.phone}</span>
                   <span className="block text-xs text-muted-foreground">
-                    Call us — Mon to Sun, 8am – 8pm
+                    Call us, Mon to Sun, 8am – 8pm
                   </span>
                 </span>
               </a>
@@ -70,7 +70,7 @@ function ContactPage() {
                 rel="noreferrer"
                 className="glass-panel flex items-center gap-4 rounded-3xl p-6 transition-transform duration-500 hover:-translate-y-1"
               >
-                <span className="grid size-12 shrink-0 place-items-center rounded-2xl bg-primary text-primary-foreground">
+                <span className="grid size-12 shrink-0 place-items-center rounded-2xl bg-whatsapp text-whatsapp-foreground">
                   <MessageCircle className="size-5" />
                 </span>
                 <span>

@@ -38,6 +38,8 @@
   --color-muted-foreground: var(--muted-foreground);
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
+  --color-whatsapp: var(--whatsapp);
+  --color-whatsapp-foreground: var(--whatsapp-foreground);
   --color-ink: var(--ink);
   --color-ink-foreground: var(--ink-foreground);
   --color-destructive: var(--destructive);
@@ -77,6 +79,10 @@
   --accent: oklch(0.565 0.215 27);
   --accent-foreground: oklch(0.99 0.01 20);
 
+  /* WhatsApp brand green */
+  --whatsapp: oklch(0.63 0.16 152);
+  --whatsapp-foreground: oklch(0.99 0.01 150);
+
   --secondary: oklch(0.96 0.015 240);
   --secondary-foreground: oklch(0.3 0.04 255);
   --muted: oklch(0.965 0.01 240);
@@ -115,6 +121,7 @@
   --shadow-glass: 0 8px 32px -8px oklch(0.24 0.035 255 / 0.22),
     inset 0 1px 0 0 oklch(1 0 0 / 0.5);
   --shadow-accent: 0 12px 30px -12px color-mix(in oklab, var(--accent) 55%, transparent);
+  --shadow-whatsapp: 0 12px 30px -12px color-mix(in oklab, var(--whatsapp) 55%, transparent);
 
   --transition-silk: 500ms cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -139,6 +146,8 @@
   --border: oklch(1 0 0 / 12%);
   --input: oklch(1 0 0 / 16%);
   --ring: oklch(0.72 0.12 240);
+  --whatsapp: oklch(0.68 0.15 152);
+  --whatsapp-foreground: oklch(0.16 0.03 155);
 }
 
 @keyframes fade-up {

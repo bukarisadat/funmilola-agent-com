@@ -13,6 +13,8 @@ const buttonVariants = cva(
         hero: "bg-[image:var(--gradient-primary)] text-primary-foreground shadow-[var(--shadow-lift)] hover:-translate-y-0.5 hover:brightness-105",
         accent:
           "bg-[image:var(--gradient-accent)] text-accent-foreground shadow-[var(--shadow-accent)] hover:-translate-y-0.5",
+        whatsapp:
+          "bg-whatsapp text-whatsapp-foreground shadow-[var(--shadow-whatsapp)] hover:-translate-y-0.5 hover:brightness-105",
         destructive: "bg-destructive text-destructive-foreground shadow-sm hover:brightness-110",
         outline:
           "border border-border bg-background/70 text-foreground backdrop-blur hover:border-primary hover:text-primary",

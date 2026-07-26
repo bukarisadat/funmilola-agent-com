@@ -105,7 +105,7 @@ export function PropertyCard({ property, className }: PropertyCardProps) {
         target="_blank"
         rel="noreferrer"
         aria-label={`Enquire about ${property.title} on WhatsApp`}
-        className="absolute bottom-[6.5rem] right-4 inline-flex items-center gap-1.5 rounded-full bg-accent px-3 py-2 text-[0.7rem] font-bold uppercase tracking-wide text-accent-foreground shadow-[var(--shadow-accent)] transition-transform duration-300 hover:scale-105"
+        className="absolute bottom-[6.5rem] right-4 inline-flex items-center gap-1.5 rounded-full bg-whatsapp px-3 py-2 text-[0.7rem] font-bold uppercase tracking-wide text-whatsapp-foreground shadow-[var(--shadow-whatsapp)] transition-transform duration-300 hover:scale-105"
       >
         <MessageCircle className="size-3.5" />
         WhatsApp

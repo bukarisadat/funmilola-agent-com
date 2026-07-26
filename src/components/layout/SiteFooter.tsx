@@ -99,7 +99,7 @@ export function SiteFooter() {
                 href={whatsappLink("Hello Funmilola Real Estate, I saw your website.")}
                 target="_blank"
                 rel="noreferrer"
-                className="font-semibold text-primary-glow"
+                className="font-semibold text-whatsapp"
               >
                 Chat on WhatsApp →
               </a>

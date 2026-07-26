@@ -26,7 +26,7 @@ export const Route = createFileRoute("/listings")({
       {
         name: "description",
         content:
-          "Browse video tours of houses and apartments for sale or rent in Accra — filter by location, price range and listing type.",
+          "Browse video tours of houses and apartments for sale or rent in Accra. Filter by location, price range and listing type.",
       },
       { property: "og:title", content: "Property Listings in Accra | Funmilola Real Estate" },
       {

@@ -114,12 +114,12 @@ export function InquiryForm({ propertyId, propertyTitle, property, className }: 
         className={cn(inputClass, "mt-3 h-auto py-3")}
       />
 
-      <Button type="submit" variant="accent" size="lg" className="mt-5 w-full" disabled={loading}>
+      <Button type="submit" variant="whatsapp" size="lg" className="mt-5 w-full" disabled={loading}>
         {loading ? <Loader2 className="size-4 animate-spin" /> : <Send className="size-4" />}
         {sent ? "Send another message" : "Send enquiry via WhatsApp"}
       </Button>
 
-      <Button asChild variant="outline" size="lg" className="mt-3 w-full">
+      <Button asChild variant="outline" size="lg" className="mt-3 w-full border-whatsapp/40 text-whatsapp hover:border-whatsapp hover:text-whatsapp">
         <a
           href={whatsappLink(buildMessage(property, {}))}
           target="_blank"

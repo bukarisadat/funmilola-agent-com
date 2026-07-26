@@ -13,7 +13,7 @@ export const Route = createFileRoute("/about")({
       {
         name: "description",
         content:
-          "Meet Funmilola Real Estate Agency — over a decade helping families buy and rent homes across Accra with honest pricing and real video tours.",
+          "Meet Funmilola Real Estate Agency: over a decade helping families buy and rent homes across Accra with honest pricing and real video tours.",
       },
       { property: "og:title", content: "About Funmilola Real Estate Agency" },
       {
@@ -33,7 +33,7 @@ const TIMELINE = [
 ];
 
 const VALUES = [
-  { icon: Video, title: "Show, don't tell", text: "Every property is filmed as it truly is — no filters, no surprises." },
+  { icon: Video, title: "Show, don't tell", text: "Every property is filmed as it truly is, no filters, no surprises." },
   { icon: HeartHandshake, title: "Client first", text: "We negotiate for you and never push a home that doesn't fit." },
   { icon: KeyRound, title: "Safe handover", text: "Documentation, inspection and handover guided by our team." },
   { icon: Award, title: "Local expertise", text: "Deep knowledge of Kasoa, Fetteh, Tuba and the West Hills corridor." },
