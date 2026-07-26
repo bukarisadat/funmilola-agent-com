@@ -8,7 +8,7 @@ import { PropertyCard } from "@/components/property/PropertyCard";
 import { Reveal } from "@/components/motion/Reveal";
 import { CountUp } from "@/components/motion/CountUp";
 import { Button } from "@/components/ui/button";
-import { propertiesQuery } from "@/lib/properties";
+import { propertiesQuery, type Property } from "@/lib/properties";
 import { SITE, whatsappLink } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
@@ -188,7 +188,7 @@ function FeaturedListings({
   featured,
   total,
 }: {
-  featured: Awaited<ReturnType<typeof import("@/lib/properties").fetchProperties>>;
+  featured: Property[];
   total: number;
 }) {
   return (
