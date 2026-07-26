@@ -18,8 +18,14 @@ interface InquiryFormProps {
 function buildMessage(
   property: Property | undefined,
   fields: { name?: string; phone?: string; note?: string },
+  /** Only true in click handlers — window.location is unavailable during SSR. */
+  withLink = false,
 ) {
-  if (property) return propertyEnquiryMessage(property, { ...fields, url: propertyUrl(property.id) });
+  if (property)
+    return propertyEnquiryMessage(property, {
+      ...fields,
+      url: withLink ? propertyUrl(property.id) : undefined,
+    });
   const lines = ["Hello Funmilola Real Estate, I'd like to enquire about a property in Accra."];
   if (fields.name) lines.push("", `My name is ${fields.name}.`);
   if (fields.phone) lines.push(`You can reach me on ${fields.phone}.`);
@@ -64,11 +70,11 @@ export function InquiryForm({ propertyId, propertyTitle, property, className }: 
     toast.success("Thank you! Opening WhatsApp so an agent can reply instantly.");
 
     const link = whatsappLink(
-      buildMessage(property, {
-        name,
-        phone,
-        note: String(data.get("message") ?? "").trim() || undefined,
-      }),
+      buildMessage(
+        property,
+        { name, phone, note: String(data.get("message") ?? "").trim() || undefined },
+        true,
+      ),
     );
     form.reset();
     window.open(link, "_blank", "noopener,noreferrer");
