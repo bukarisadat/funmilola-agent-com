@@ -22,10 +22,10 @@ export const Route = createFileRoute("/")({
         content:
           "Video tours of houses for sale and for rent across Accra, Ghana. Flexible payment plans. Call +233-242-932-560.",
       },
-      { property: "og:title", content: "Funmilola Real Estate Agency | Houses in Accra" },
+      { property: "og:title", content: "Funmilola Real Estate Agency | Buy & Rent Houses in Accra" },
       {
         property: "og:description",
-        content: "We sell and rent houses in Accra. Watch video tours of verified properties.",
+        content: "Video tours of houses for sale and for rent across Accra, Ghana. Flexible payment plans. Call +233-242-932-560.",
       },
     ],
   }),

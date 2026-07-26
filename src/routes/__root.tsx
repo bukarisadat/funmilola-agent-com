@@ -80,20 +80,24 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Funmilola Real Estate Agency | Houses in Accra" },
+      { title: "Funmilola Real Estate Agency | Buy & Rent Houses in Accra" },
       {
         name: "description",
         content:
-          "Funmilola Real Estate Agency sells and rents verified houses across Accra, Ghana. Video tours, flexible payment plans, honest pricing.",
+          "Video tours of houses for sale and for rent across Accra, Ghana. Flexible payment plans. Call +233-242-932-560.",
       },
       { name: "author", content: "Funmilola Real Estate Agency" },
-      { property: "og:title", content: "Funmilola Real Estate Agency | Houses in Accra" },
+      { property: "og:title", content: "Funmilola Real Estate Agency | Buy & Rent Houses in Accra" },
       {
         property: "og:description",
-        content: "We sell and rent houses in Accra. Browse video tours of verified properties.",
+        content: "Video tours of houses for sale and for rent across Accra, Ghana. Flexible payment plans. Call +233-242-932-560.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Funmilola Real Estate Agency | Buy & Rent Houses in Accra" },
+      { name: "twitter:description", content: "Video tours of houses for sale and for rent across Accra, Ghana. Flexible payment plans. Call +233-242-932-560." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/6147b534-b403-4ba3-b305-4c3b45529308/id-preview-c7b5f1c2--acc537ef-e15d-4f83-b868-c8a18ee08a5e.lovable.app-1785065821223.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/6147b534-b403-4ba3-b305-4c3b45529308/id-preview-c7b5f1c2--acc537ef-e15d-4f83-b868-c8a18ee08a5e.lovable.app-1785065821223.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
