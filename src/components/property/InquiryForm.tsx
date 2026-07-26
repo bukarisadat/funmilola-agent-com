@@ -3,7 +3,7 @@ import { toast } from "sonner";
 import { Loader2, MessageCircle, Send } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
-import { propertyEnquiryMessage, type Property } from "@/lib/properties";
+import { propertyEnquiryMessage, propertyUrl, type Property } from "@/lib/properties";
 import { whatsappLink } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
@@ -19,7 +19,7 @@ function buildMessage(
   property: Property | undefined,
   fields: { name?: string; phone?: string; note?: string },
 ) {
-  if (property) return propertyEnquiryMessage(property, fields);
+  if (property) return propertyEnquiryMessage(property, { ...fields, url: propertyUrl(property.id) });
   const lines = ["Hello Funmilola Real Estate, I'd like to enquire about a property in Accra."];
   if (fields.name) lines.push("", `My name is ${fields.name}.`);
   if (fields.phone) lines.push(`You can reach me on ${fields.phone}.`);

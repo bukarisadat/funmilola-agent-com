@@ -106,22 +106,24 @@ export function propertyEnquiryMessage(
   const lines = [
     `Hello Funmilola Real Estate, I'm interested in this property:`,
     ``,
-    `🏠 ${property.title}`,
-    `📍 ${property.location}`,
-    `🏷️ ${listingLabel(property.listing_type)} — ${formatPrice(property.price, property.currency)}${
-      property.listing_type === "rent" ? " /month" : ""
+    `Property: ${property.title}`,
+    `Location: ${property.location}`,
+    `${listingLabel(property.listing_type)}: ${formatPrice(property.price, property.currency)}${
+      property.listing_type === "rent" ? " per month" : ""
     }`,
   ];
 
-  const link =
-    options.url ??
-    (typeof window !== "undefined" ? `${window.location.origin}/property/${property.id}` : undefined);
-  if (link) lines.push(`🔗 ${link}`);
-
+  if (options.url) lines.push(`Link: ${options.url}`);
   if (options.name) lines.push(``, `My name is ${options.name}.`);
   if (options.phone) lines.push(`You can reach me on ${options.phone}.`);
   if (options.note) lines.push(``, options.note);
   lines.push(``, `Please share more details and inspection times.`);
 
   return lines.join("\n");
+}
+
+/** Same-origin link to a property page — call only from the browser. */
+export function propertyUrl(id: string) {
+  if (typeof window === "undefined") return undefined;
+  return `${window.location.origin}/property/${id}`;
 }
