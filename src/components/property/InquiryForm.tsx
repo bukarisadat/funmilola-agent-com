@@ -1,0 +1,92 @@
+import { useState } from "react";
+import { toast } from "sonner";
+import { Loader2, Send } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
+
+interface InquiryFormProps {
+  propertyId?: string;
+  propertyTitle?: string;
+  className?: string;
+}
+
+const inputClass =
+  "h-12 w-full rounded-2xl border border-border bg-card/80 px-4 text-sm text-foreground outline-none transition-all placeholder:text-muted-foreground focus:border-primary focus:ring-4 focus:ring-primary/15";
+
+export function InquiryForm({ propertyId, propertyTitle, className }: InquiryFormProps) {
+  const [loading, setLoading] = useState(false);
+  const [sent, setSent] = useState(false);
+
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const form = event.currentTarget;
+    const data = new FormData(form);
+    const name = String(data.get("name") ?? "").trim();
+    const phone = String(data.get("phone") ?? "").trim();
+
+    if (!name || !phone) {
+      toast.error("Please add your name and phone number.");
+      return;
+    }
+
+    setLoading(true);
+    const { error } = await supabase.from("inquiries").insert({
+      property_id: propertyId ?? null,
+      name,
+      phone,
+      email: String(data.get("email") ?? "").trim() || null,
+      message: String(data.get("message") ?? "").trim() || null,
+    });
+    setLoading(false);
+
+    if (error) {
+      toast.error("We couldn't send that. Please call us instead.");
+      return;
+    }
+    setSent(true);
+    form.reset();
+    toast.success("Thank you! Our agent will call you shortly.");
+  }
+
+  return (
+    <form onSubmit={handleSubmit} className={cn("glass-panel rounded-3xl p-6 md:p-8", className)}>
+      <h3 className="font-display text-xl font-bold">
+        {propertyTitle ? "Enquire about this property" : "Send us a message"}
+      </h3>
+      <p className="mt-2 text-sm text-muted-foreground">
+        {propertyTitle
+          ? `Tell us when you'd like to inspect ${propertyTitle}.`
+          : "Leave your details and an agent will get back to you the same day."}
+      </p>
+
+      <div className="mt-6 grid gap-3 sm:grid-cols-2">
+        <input name="name" placeholder="Your full name" className={inputClass} autoComplete="name" />
+        <input
+          name="phone"
+          placeholder="Phone / WhatsApp number"
+          className={inputClass}
+          autoComplete="tel"
+        />
+      </div>
+      <input
+        name="email"
+        type="email"
+        placeholder="Email (optional)"
+        className={cn(inputClass, "mt-3")}
+        autoComplete="email"
+      />
+      <textarea
+        name="message"
+        rows={4}
+        placeholder={propertyTitle ? `I'm interested in ${propertyTitle}...` : "How can we help?"}
+        className={cn(inputClass, "mt-3 h-auto py-3")}
+      />
+
+      <Button type="submit" variant="accent" size="lg" className="mt-5 w-full" disabled={loading}>
+        {loading ? <Loader2 className="size-4 animate-spin" /> : <Send className="size-4" />}
+        {sent ? "Send another message" : "Send enquiry"}
+      </Button>
+    </form>
+  );
+}
