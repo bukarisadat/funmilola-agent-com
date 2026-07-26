@@ -1,20 +1,36 @@
 import { useState } from "react";
 import { toast } from "sonner";
-import { Loader2, Send } from "lucide-react";
+import { Loader2, MessageCircle, Send } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
+import { propertyEnquiryMessage, type Property } from "@/lib/properties";
+import { whatsappLink } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 interface InquiryFormProps {
   propertyId?: string;
   propertyTitle?: string;
+  /** When present, WhatsApp messages are prefilled with this property's details. */
+  property?: Property;
   className?: string;
+}
+
+function buildMessage(
+  property: Property | undefined,
+  fields: { name?: string; phone?: string; note?: string },
+) {
+  if (property) return propertyEnquiryMessage(property, fields);
+  const lines = ["Hello Funmilola Real Estate, I'd like to enquire about a property in Accra."];
+  if (fields.name) lines.push("", `My name is ${fields.name}.`);
+  if (fields.phone) lines.push(`You can reach me on ${fields.phone}.`);
+  if (fields.note) lines.push("", fields.note);
+  return lines.join("\n");
 }
 
 const inputClass =
   "h-12 w-full rounded-2xl border border-border bg-card/80 px-4 text-sm text-foreground outline-none transition-all placeholder:text-muted-foreground focus:border-primary focus:ring-4 focus:ring-primary/15";
 
-export function InquiryForm({ propertyId, propertyTitle, className }: InquiryFormProps) {
+export function InquiryForm({ propertyId, propertyTitle, property, className }: InquiryFormProps) {
   const [loading, setLoading] = useState(false);
   const [sent, setSent] = useState(false);
 
@@ -45,8 +61,17 @@ export function InquiryForm({ propertyId, propertyTitle, className }: InquiryFor
       return;
     }
     setSent(true);
+    toast.success("Thank you! Opening WhatsApp so an agent can reply instantly.");
+
+    const link = whatsappLink(
+      buildMessage(property, {
+        name,
+        phone,
+        note: String(data.get("message") ?? "").trim() || undefined,
+      }),
+    );
     form.reset();
-    toast.success("Thank you! Our agent will call you shortly.");
+    window.open(link, "_blank", "noopener,noreferrer");
   }
 
   return (
@@ -85,8 +110,25 @@ export function InquiryForm({ propertyId, propertyTitle, className }: InquiryFor
 
       <Button type="submit" variant="accent" size="lg" className="mt-5 w-full" disabled={loading}>
         {loading ? <Loader2 className="size-4 animate-spin" /> : <Send className="size-4" />}
-        {sent ? "Send another message" : "Send enquiry"}
+        {sent ? "Send another message" : "Send enquiry via WhatsApp"}
       </Button>
+
+      <Button asChild variant="outline" size="lg" className="mt-3 w-full">
+        <a
+          href={whatsappLink(buildMessage(property, {}))}
+          target="_blank"
+          rel="noreferrer"
+        >
+          <MessageCircle className="size-4" />
+          {property ? "Chat about this property" : "Chat with an agent now"}
+        </a>
+      </Button>
+
+      <p className="mt-3 text-center text-xs text-muted-foreground">
+        {property
+          ? "WhatsApp opens with this property's name, location and price already filled in."
+          : "WhatsApp opens with your message already filled in."}
+      </p>
     </form>
   );
 }
