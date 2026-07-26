@@ -96,7 +96,7 @@ function Hero() {
 
         <Reveal delay={220}>
           <p className="mt-6 max-w-xl text-base text-ink-foreground/80 sm:text-lg">
-            Real video tours, verified owners and flexible payment plans — from Kasoa to the West
+            Real video tours, verified owners and flexible payment plans, from Kasoa to the West
             Hills Axis. Find your next home without the guesswork.
           </p>
         </Reveal>
@@ -126,7 +126,7 @@ function Hero() {
                 <input
                   value={query}
                   onChange={(event) => setQuery(event.target.value)}
-                  placeholder="Search area — Kasoa, West Hills, Fetteh…"
+                  placeholder="Search area: Kasoa, West Hills, Fetteh…"
                   className="h-12 w-full rounded-full border border-border bg-card/80 pl-11 pr-4 text-sm outline-none transition-all placeholder:text-muted-foreground focus:border-primary focus:ring-4 focus:ring-primary/15"
                 />
               </div>
@@ -142,7 +142,7 @@ function Hero() {
 
         <Reveal delay={420}>
           <div className="mt-8 flex flex-wrap gap-3">
-            <Button asChild variant="accent" size="lg">
+            <Button asChild variant="whatsapp" size="lg">
               <a href={whatsappLink("Hi Funmilola Real Estate, I'd like help finding a house.")} target="_blank" rel="noreferrer">
                 Chat on WhatsApp
               </a>
@@ -203,7 +203,7 @@ function FeaturedListings({
               Fresh homes on the market
             </h2>
             <p className="mt-3 max-w-lg text-sm text-muted-foreground">
-              {total} live {total === 1 ? "listing" : "listings"} — hover a card to preview the tour.
+              {total} live {total === 1 ? "listing" : "listings"}. Hover a card to preview the tour.
             </p>
           </div>
           <Button asChild variant="outline" size="lg">
@@ -216,7 +216,7 @@ function FeaturedListings({
 
         {featured.length === 0 ? (
           <p className="mt-12 rounded-3xl border border-dashed border-border p-10 text-center text-sm text-muted-foreground">
-            No listings yet — the agency will publish video tours here shortly.
+            No listings yet. The agency will publish video tours here shortly.
           </p>
         ) : (
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -265,11 +265,11 @@ function CtaBand() {
             Ready to move into your own home?
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-sm text-muted-foreground sm:text-base">
-            Send us a message on WhatsApp or call directly — our agents answer every day, including
+            Send us a message on WhatsApp or call directly. Our agents answer every day, including
             weekends.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
-            <Button asChild variant="accent" size="xl">
+            <Button asChild variant="whatsapp" size="xl">
               <a
                 href={whatsappLink("Hello! I'd like to speak to an agent about a property in Accra.")}
                 target="_blank"

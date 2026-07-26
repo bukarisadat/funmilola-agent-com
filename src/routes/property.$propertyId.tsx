@@ -35,7 +35,7 @@ export const Route = createFileRoute("/property/$propertyId")({
       {
         name: "description",
         content: loaderData
-          ? `${listingLabel(loaderData.listing_type)} — ${loaderData.title} at ${loaderData.location} for ${formatPrice(loaderData.price, loaderData.currency)}. Watch the video tour.`
+          ? `${listingLabel(loaderData.listing_type)}, ${loaderData.title} at ${loaderData.location} for ${formatPrice(loaderData.price, loaderData.currency)}. Watch the video tour.`
           : "Property details and video tour from Funmilola Real Estate Agency in Accra.",
       },
       {
@@ -142,7 +142,7 @@ function PropertyDetailPage() {
               )}
 
               <div className="mt-8 flex flex-wrap gap-3">
-                <Button asChild variant="accent" size="lg">
+                <Button asChild variant="whatsapp" size="lg">
                   <a
                     href={whatsappLink(propertyEnquiryMessage(property))}
                     target="_blank"
