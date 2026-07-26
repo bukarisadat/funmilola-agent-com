@@ -12,6 +12,7 @@ import {
   formatPrice,
   listingLabel,
   propertiesQuery,
+  propertyEnquiryMessage,
   propertyQuery,
 } from "@/lib/properties";
 import { SITE, whatsappLink } from "@/lib/site";
@@ -143,9 +144,7 @@ function PropertyDetailPage() {
               <div className="mt-8 flex flex-wrap gap-3">
                 <Button asChild variant="accent" size="lg">
                   <a
-                    href={whatsappLink(
-                      `Hello Funmilola Real Estate, I'm interested in "${property.title}" at ${property.location}.`,
-                    )}
+                    href={whatsappLink(propertyEnquiryMessage(property))}
                     target="_blank"
                     rel="noreferrer"
                   >
@@ -167,7 +166,7 @@ function PropertyDetailPage() {
       <section className="section-y">
         <div className="mx-auto grid max-w-7xl gap-10 px-4 lg:grid-cols-[0.9fr_1.1fr]">
           <Reveal>
-            <InquiryForm propertyId={property.id} propertyTitle={property.title} />
+            <InquiryForm propertyId={property.id} propertyTitle={property.title} property={property} />
           </Reveal>
           <Reveal delay={120}>
             <h2 className="font-display text-2xl font-extrabold">You may also like</h2>

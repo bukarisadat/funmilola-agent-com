@@ -1,8 +1,15 @@
 import { Link } from "@tanstack/react-router";
-import { BedDouble, MapPin } from "lucide-react";
+import { BedDouble, MapPin, MessageCircle } from "lucide-react";
 import { useRef, type MouseEvent } from "react";
 import { PropertyVideo } from "./PropertyVideo";
-import { fallbackImage, formatPrice, listingLabel, type Property } from "@/lib/properties";
+import {
+  fallbackImage,
+  formatPrice,
+  listingLabel,
+  propertyEnquiryMessage,
+  type Property,
+} from "@/lib/properties";
+import { whatsappLink } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 interface PropertyCardProps {
@@ -92,6 +99,17 @@ export function PropertyCard({ property, className }: PropertyCardProps) {
           </div>
         </div>
       </Link>
+
+      <a
+        href={whatsappLink(propertyEnquiryMessage(property))}
+        target="_blank"
+        rel="noreferrer"
+        aria-label={`Enquire about ${property.title} on WhatsApp`}
+        className="absolute bottom-[6.5rem] right-4 inline-flex items-center gap-1.5 rounded-full bg-accent px-3 py-2 text-[0.7rem] font-bold uppercase tracking-wide text-accent-foreground shadow-[var(--shadow-accent)] transition-transform duration-300 hover:scale-105"
+      >
+        <MessageCircle className="size-3.5" />
+        WhatsApp
+      </a>
     </div>
   );
 }
