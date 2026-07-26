@@ -97,3 +97,31 @@ export const videoUrlQuery = (path: string | null) =>
     enabled: !!path,
     staleTime: 60 * 60 * 1000,
   });
+
+/** Prefilled WhatsApp message describing a specific property. */
+export function propertyEnquiryMessage(
+  property: Pick<Property, "title" | "location" | "price" | "currency" | "listing_type" | "id">,
+  options: { name?: string; phone?: string; note?: string; url?: string } = {},
+) {
+  const lines = [
+    `Hello Funmilola Real Estate, I'm interested in this property:`,
+    ``,
+    `🏠 ${property.title}`,
+    `📍 ${property.location}`,
+    `🏷️ ${listingLabel(property.listing_type)} — ${formatPrice(property.price, property.currency)}${
+      property.listing_type === "rent" ? " /month" : ""
+    }`,
+  ];
+
+  const link =
+    options.url ??
+    (typeof window !== "undefined" ? `${window.location.origin}/property/${property.id}` : undefined);
+  if (link) lines.push(`🔗 ${link}`);
+
+  if (options.name) lines.push(``, `My name is ${options.name}.`);
+  if (options.phone) lines.push(`You can reach me on ${options.phone}.`);
+  if (options.note) lines.push(``, options.note);
+  lines.push(``, `Please share more details and inspection times.`);
+
+  return lines.join("\n");
+}
