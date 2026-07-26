@@ -12,6 +12,7 @@ import {
   formatPrice,
   listingLabel,
   propertiesQuery,
+  type ListingType,
   type Property,
 } from "@/lib/properties";
 import { useAdminSession } from "@/hooks/use-admin-session";
@@ -289,7 +290,7 @@ function PropertyForm({
       location: String(data.get("location") ?? "").trim(),
       price: Number(data.get("price") ?? 0),
       currency: String(data.get("currency") ?? "GHS"),
-      listing_type: String(data.get("listing_type") ?? "sale"),
+      listing_type: (data.get("listing_type") === "rent" ? "rent" : "sale") as ListingType,
       bedrooms: data.get("bedrooms") ? Number(data.get("bedrooms")) : null,
       payment_plan: String(data.get("payment_plan") ?? "").trim() || null,
       description: String(data.get("description") ?? "").trim() || null,
